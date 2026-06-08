@@ -168,24 +168,45 @@ footer {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+
+
+
+
+/* Título do card */
+.card:hover { 
+    
+   /* Move o card 5 pixels para cima */
+    transform: translateY(-5px);
+
+    /* Aumenta a sombra para destacar o card */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+
 /* Título do card */
 .card h3 {
 
-    /* Espaço abaixo do título */
+    /* Espaçamento superior */
+    margin-top: 15px;
+
+    /* Espaçamento inferior */
     margin-bottom: 10px;
 
-    /* Cor do título */
+    /* Cor do texto */
     color: #1f2937;
 }
 
 /* Texto do card */
 .card p {
 
-    /* Tamanho do texto */
-    font-size: 14px;
+    /* Espaçamento interno lateral */
+    padding: 0 15px;
 
     /* Espaço abaixo do texto */
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+
+    /* Cor da descrição */
+    color: #555;
 }
 
 /* Botão do card */
@@ -194,25 +215,41 @@ footer {
     /* Cor de fundo */
     background-color: #2563eb;
 
-    /* Cor da fonte */
+    /* Cor do texto */
     color: white;
 
-    /* Remove a borda padrão */
+    /* Remove borda padrão */
     border: none;
 
     /* Espaçamento interno */
     padding: 10px 15px;
 
-    /* Arredondamento */
+    /* Arredonda os cantos */
     border-radius: 5px;
 
-    /* Cursor de clique */
+    /* Altera o cursor para mãozinha */
     cursor: pointer;
+
+    /* Espaço inferior */
+    margin-bottom: 20px;
 }
 
 /* Efeito ao passar o mouse no botão */
 .card button:hover {
 
-    /* Cor de fundo mais escura */
+    /* Escurece o botão */
     background-color: #1d4ed8;
+}
+
+
+.card img {
+
+    /* Ocupa toda a largura do card */
+    width: 50%;
+
+    /* Altura fixa */
+    height: 200px;
+
+    /* Ajusta a imagem sem deformar */
+    object-fit: cover;
 }
