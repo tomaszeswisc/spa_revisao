@@ -129,3 +129,90 @@ footer {
     /* Adiciona espaçamento interno */
     padding: 15px;
 }
+
+/*-------------------------- Estilizando a parte dos cards ---------------------------------------------------*/
+
+
+/* Área que organiza os cards em formato de grade */
+.grid {
+
+    /* Ativa o CSS Grid */
+    display: grid;
+
+    /* Cria 3 colunas com tamanhos iguais */
+    grid-template-columns: repeat(3, 1fr);
+
+    /* Define o espaço entre os cards */
+    gap: 20px;
+}
+
+/* Estilo visual de cada card */
+.card {
+
+    /* Cor de fundo do card */
+    background-color: #f9fafb;
+
+    /* Borda clara ao redor do card */
+    border: 1px solid #ddd;
+
+    /* Arredonda os cantos */
+    border-radius: 10px;
+
+    /* Espaçamento interno */
+    padding: 20px;
+
+    /* Centraliza o texto */
+    text-align: center;
+
+    /* Sombra suave */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do card */
+.card h3 {
+
+    /* Espaço abaixo do título */
+    margin-bottom: 10px;
+
+    /* Cor do título */
+    color: #1f2937;
+}
+
+/* Texto do card */
+.card p {
+
+    /* Tamanho do texto */
+    font-size: 14px;
+
+    /* Espaço abaixo do texto */
+    margin-bottom: 15px;
+}
+
+/* Botão do card */
+.card button {
+
+    /* Cor de fundo */
+    background-color: #2563eb;
+
+    /* Cor da fonte */
+    color: white;
+
+    /* Remove a borda padrão */
+    border: none;
+
+    /* Espaçamento interno */
+    padding: 10px 15px;
+
+    /* Arredondamento */
+    border-radius: 5px;
+
+    /* Cursor de clique */
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse no botão */
+.card button:hover {
+
+    /* Cor de fundo mais escura */
+    background-color: #1d4ed8;
+}
