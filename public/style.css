@@ -248,7 +248,7 @@ footer {
     width: 50%;
 
     /* Altura fixa */
-    height: 200px;
+    height: 100px;
 
     /* Ajusta a imagem sem deformar */
     object-fit: cover;
