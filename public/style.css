@@ -253,3 +253,100 @@ footer {
     /* Ajusta a imagem sem deformar */
     object-fit: cover;
 }
+
+/*----------------------------- Modal ------------------------------*/
+
+/*Overlay do Modal*/
+
+/*Inicialmente oculto*/
+
+#modalOverlay{
+
+    display:flex;
+
+/*Fixa o elemento na tela*/
+
+position: fixed;
+
+/*Encostar no topo*/
+
+top:0;
+
+/*Encostar à esquerda*/
+
+left:0;
+
+/*Ocupa toda a largura*/
+
+width:100%;
+
+/*Ocupa toa a altura*/
+
+height: 100%;
+
+/*Fundo escurecido*/
+
+background-color:rgba(0, 0, 0, 0.6) ;
+
+/*Centraliza conteúdo horizontalmente*/
+
+justify-content: center;
+
+/* Centraliza conteúdo verticalmente */
+
+align-items: center;
+
+
+}
+
+/* ----------------------Jaanela do Modal------------------- */
+
+#modal{
+
+    /* Cor de fundo */
+    background-color: white;
+
+    /* Espaçamento interno */
+    padding: 30px;
+
+    /* Largura máxima */
+    width: 500px;
+
+    /* Arredonda os cantos */
+
+    border-radius: 10px;
+
+    /* Centraliza o texto */
+    text-align: center;
+
+    /* Criar sombra */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+}
+
+/* ----------- Botão Fechar --------------- */
+
+#btnFechar{
+
+    /* Cor de Fundo */
+    background-color: #dc2626;
+
+    /* Cor do texto */
+    color: white;
+
+    /* remover a borda */
+    border: :none;
+
+    /* Espaçamento interno */
+    padding: 10px 20px;
+
+    /* Arredondar od cantos */
+    border-radius:5px;
+
+    /* Cursor de clique */
+    cursor: pointer;
+
+    /* Espaçamento superior */
+    margin-top:20px;
+
+}
