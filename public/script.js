@@ -15,6 +15,7 @@ const  botoesDetalhes = document.querySelectorAll(".btnDetalhes");
 
 function abrirModal(){
 
+    /* Mostra o Modal */
     modalOverlay.style.display = "flex";
 }
 
@@ -22,7 +23,9 @@ function abrirModal(){
 
 function fecharModal(){
 
+    /* Oculta o Modal */
     modalOverlay.style.display = "none";
+
 }
 
 
@@ -36,8 +39,10 @@ btnFechar.addEventListener(
 
 );
 
-//Percorrer os Botoes
 
+//Percorrer todos Botoes
+
+/*forEach - Percorre todos os botoes existentes */
 botoesDetalhes.forEach(
 
     function(botao){
@@ -51,5 +56,29 @@ botoesDetalhes.forEach(
         );
 
     }
+
+);
+
+// Fechar ao clicar Fora do Modal
+
+/* Adiciona um evento de clique ao fundo do modal (overlay) */
+modalOverlay.addEventListener(
+
+    "click",
+
+    function(evento){
+
+    /* Verifica se o clique foi realizado diretamente no overlay
+e não em algum elemento dentro do modal */
+
+    if(evento.target === modalOverlay){ 
+
+    /* Fecha o modal */
     
+    fecharModal();
+
+        }
+
+    }
+
 );
