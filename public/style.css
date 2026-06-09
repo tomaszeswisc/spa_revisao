@@ -262,7 +262,7 @@ footer {
 
 #modalOverlay{
 
-    display:flex;
+    display:flex; /*None para esconder o Modal*/
 
 /*Fixa o elemento na tela*/
 
