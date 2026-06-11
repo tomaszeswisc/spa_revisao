@@ -10,20 +10,14 @@ CREATE TABLE produtos(
 
 /* identificador único*/
 id INT auto_increment primary key,
-
 /*Nome do Produto*/
 nome varchar(100),
-
 /* categoria */
 categoria varchar(100),
-
 /*descricao*/
 descricao TEXT
-
 );
 
-
 /* Mostrar os campos da tabela */
-
 describe produtos;
 
