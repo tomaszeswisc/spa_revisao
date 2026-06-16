@@ -118,14 +118,24 @@ app.get("/produtos/:id", function(req, res){
 app.post("/produtos", function(req, res){
     //cria todas constantes de uma so vez
  
+    //Essa linha subistitui o bloco abaixo
+    //Isso chama-se Desestruturação de Objetos (Object Destructuring).
+
+    // ------- Forma moderna equivalente -----
     //const {nome, categoria, descrição} = req.body
 
+    //------ Forma tradicional------
+    //=====================================
     //Capturar o nome enviado
     const nome = req.body.nome;
     //Capturar a categoria
     const categoria = req.body.categoria;
     //Capturar a descrição
     const descricao = req.body.descricao;
+    //======================================
+
+    //Caso prefira a forma moderna comentar essas linhas do bloco
+    // e descomentar a linha da forma moderna
 
     //Criar o SQL de inserção
     const sql = `insert into produtos (nome, categoria, descricao) values(?,?,?)`;
