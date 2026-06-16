@@ -1,91 +1,91 @@
-/*-----------Importar as bibliotecas--------------*/
-/*Importa o Express*/
+//-----------Importar as bibliotecas--------------
+//Importa o Express
 const express = require("express");
-/*Importa o MYSQL2 */
+//Importa o MYSQL2 
 const mysql = require("mysql2");
-/* Importa o CORS*/
+// Importa o CORS
 const cors = require("cors");
 
-/*-----------------------------------------------*/
+//-----------------------------------------------
 
-/*Criar a aplicação utilizando o express*/
+//Criar a aplicação utilizando o express
 const app = express();
 
-/* Permitir receber os dados JSON*/
+// Permitir receber os dados JSON
 app.use(express.json());
 
-/*Habilita o CORS*/
+//Habilita o CORS
 app.use(cors());
 
-/*----------------------------------------------*/
+//----------------------------------------------
 
-/*Servir os arquivos estaticos*/
+//Servir os arquivos estaticos
 app.use(express.static("public"));
 
-/*---------------------------------------------*/
+//---------------------------------------------
 
-/*Conexão com Banco de Dados*/
+//Conexão com Banco de Dados
 
 const db = mysql.createConnection({
-    /*Endereço do servidor*/
+    //Endereço do servidor
     host:"localhost",
-    /*Usuario do banco de dados*/
+    //Usuario do banco de dados
     user:"root",
-    /*senha do Banco de Dados*/
+    //senha do Banco de Dados
     password:"123456",
-    /*Nome do Banco de Dados*/
+    //Nome do Banco de Dados
     database:"atividade_single_page"
 });
 
-/*Teste de Conexão */
+//Teste de Conexão 
 db.connect(function(erro){
-    /*Verifica erro*/
+    //Verifica erro
     if(erro){
-        /*Exibe erro no terminal*/
+        //Exibe erro no terminal
         console.log("Erro ao conectar ao banco:", erro);
         return;
     }
-    /*Exibe mensagem de sucesso*/
+    //Exibe mensagem de sucesso
     console.log("Conectado ao Banco de Dados MySQL!");
     
 });
 
-/*--------------------------------------------------------------*/
+//--------------------------------------------------------------
 
-/*Iniciar o Servidor na porta 3000 */
+//Iniciar o Servidor na porta 3000 
 app.listen(3000,function(){
-    /*Exibir menssagem de servidor ativo */
+    //Exibir menssagem de servidor ativo 
     console.log("Servidor esta rodando em http://localhost:3000");
 });
 
 
-/*------------------------ Rotas para teste --------------------------------*/
-/* Rota GET para Listar os Produtos */
+//------------------------ Rotas para teste --------------------------------
+
+// ------------ Rota GET - Para listar todos os  produtos -----------------
 
 app.get("/produtos", function(req, res){
-    /*Comando SQL de busca de produtos */
+    //Comando SQL de busca de produtos 
     const sql ="select * from produtos";
 
-    /*Executar a busca */
+    //Executar a busca 
     db.query(sql, function(erro, resultados){
 
-        /*Verificar se ocorreu erro */
+        //Verificar se ocorreu erro 
 
         if(erro){
-            /*Retorna o erro para o Cliente */
+            //Retorna o erro para o Cliente 
             return res.status(500).json({
                 erro:"Erro ao buscar produtos"
             });
         }
 
-        /*Retorna os produtos encontrados */
+        //Retorna os produtos encontrados 
         res.status(200).json(resultados);
     });
 
 });
 
-// --------------- Rota Para Buscar produto por ID -----------------
-//Rota GET para buscar um produto específico
+// --------------- Rota GET - Rota Para Buscar produto por ID -----------------
 
 app.get("/produtos/:id", function(req, res){
     //Capturar o id envidado pela URL
@@ -113,8 +113,7 @@ app.get("/produtos/:id", function(req, res){
     });
 });
 
-
-//------------ Cadastrar Produto ----------------
+// --------------- Rota POST - Rota para cadastrar um Produto -----------------
 
 app.post("/produtos", function(req, res){
     //cria todas constantes de uma so vez
@@ -146,3 +145,6 @@ app.post("/produtos", function(req, res){
         });
     });
 });
+
+// --------------- Rota para atualizar um Produto -----------------
+
