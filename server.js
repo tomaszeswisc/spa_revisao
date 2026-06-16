@@ -156,5 +156,91 @@ app.post("/produtos", function(req, res){
     });
 });
 
-// --------------- Rota para atualizar um Produto -----------------
+// ----------- Rota PUT - Rota para atualizar um produto Existente -----------------
+//PUT - Atualiza todos os campos do Produto
 
+app.put("/produtos/:id", function(req, res){
+    
+    //capturar o ID enviado pela URL
+    const id = req.params.id;
+    
+    //Capturar os dados envidos 
+    //Capturar o nome enviado
+    const nome = req.body.nome;
+    //Capturar a categoria
+    const categoria = req.body.categoria;
+    //Capturar a descrição
+    const descricao = req.body.descricao;
+
+    //Comando SQL de atualazação
+
+    const sql = `update produtos set nome = ?, categoria = ?, descricao = ? where id = ?`;
+
+    //Executar a atualização
+    db.query(sql, [nome, categoria, descricao, id], function(erro,resultado){
+        //Verifica o erro
+        if(erro){
+            //Retornar mensagem de erro
+            return res.status(500).json({
+                erro: "Erro ao atualizar o produto"
+            });
+        }
+        //verifica se encontrou algum registro
+        if(resultado.affectedRows === 0){
+            //Retorna mensagem de não encontrado
+            return res.status(404).json({
+                menssagem:"Produtdo não encontrado!"
+            });
+        }
+        //Retorna mensagem de sucesso
+        res.status(200).json({
+            messagem:"Produto atualizado com sucesso!"
+        });
+    });
+});
+
+// --------- Rota PATCH - Rota para atualizar um produto Existente -----------------
+// PATCH - Atualiza partes do produto(Parcial)
+
+app.patch("/produtos/:id", function(req, res){
+    //capturar o ID enviado pela URL
+    const id = req.params.id;
+    
+    //Capturar os dados envidos 
+    //Capturar o nome enviado
+    const nome = req.body.nome;
+    //Capturar a categoria
+    const categoria = req.body.categoria;
+    //Capturar a descrição
+    const descricao = req.body.descricao;
+
+    //Comando SQL de atualazação
+
+    const sql = `update produtos set 
+    nome = ifnull(?,nome), 
+    categoria = ifnull(?,categoria), 
+    descricao = ifnull(?,descricao) 
+    where id = ?`;
+
+    //Executar a atualização
+    db.query(sql, [nome, categoria, descricao, id], function(erro,resultado){
+        //Verifica o erro
+        if(erro){
+            //Retornar mensagem de erro
+            return res.status(500).json({
+                erro: "Erro ao atualizar o produto"
+            });
+        }
+        //verifica se encontrou algum registro
+        if(resultado.affectedRows === 0){
+            //Retorna mensagem de não encontrado
+            return res.status(404).json({
+                menssagem:"Produtdo não encontrado!"
+            });
+        }
+        //Retorna mensagem de sucesso
+        res.status(200).json({
+            messagem:"Produto atualizado parcialmente com sucesso!"
+        });
+    });
+});
