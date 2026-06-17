@@ -244,3 +244,38 @@ app.patch("/produtos/:id", function(req, res){
         });
     });
 });
+
+
+// --------- Rota DELETE - Rota para deletar um produto Existente -----------------
+
+app.delete("/produtos/:id", function(req, res){
+    //Captura o ID enviado pela URL
+    const id = req.params.id;
+
+    //Comando SQL para exclusão
+    const sql = "delete from produtos where id = ?";
+
+    //Executa a exclusão
+    db.query(sql, [id], function(erro,resultado){
+        //verifica erro
+        if(erro){
+
+            //Retorna mensagem de erro
+            return res.status(500).json({
+                erro:"Erro ao excluir produto"
+            });
+        }
+        //verifica se encontrou algum registro
+        if(resultado.affectedRows === 0){
+            //Retorna mensagem de não encontrado
+            return res.status(404).json({
+                menssagem:"Produtdo não encontrado!"
+            });
+        }
+        //Retorna mensagem de sucesso
+        res.status(200).json({
+            messagem:"Produto excluido sucesso!"
+        });
+    });
+    
+});
